@@ -1,216 +1,177 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+import random
+import os
 
+# Variáveis globais
+vida_boss = 130
+vida_guerreiro = 100
+usos_magia = 3
+usos_cura = 3
+moedas = 500.0
+ataque = 0.0
+ataque_distancia = 0.0
+ataque_do_boss = 23.0
+nome = ""
 
-// Variáveis globais
-int vida_boss = 130;
-int vida_guerreiro = 100;
-int usos_magia = 3;
-int usos_cura = 3;
-float moedas = 500.0;
-int ataque = 0;
-int ataque_distancia = 0;
-int defesa = 0;
-char nome[50];
+os.system("cls")
+nome = input("Insira o nome do aventureiro: ")
+os.system("cls")
 
+print(f"O aventureiro {nome} começou sua aventura e se deparou com uma bifurcação.")
+print("O caminho da esquerda leva para um castelo assombrado.")
+print("O caminho da direita leva para um pântano sombrio.")
 
-int main() {
+escolha = input(f"\nPor qual caminho {nome} irá seguir: \n[1] Esquerda\n[2] Direita\nResposta: ")
+os.system("cls")
 
+if escolha == '1':
+    print("Adentrando o Castelo, você encontra um velho afiando uma espada.")
+    print("-- O que você faz neste castelo?")
+    escolha = input("[1] Estou em busca do meu caminho\n[2] Não é da sua conta\nResposta: ")
+    os.system("cls")
     
-    printf("Insira o nome do aventureiro: ");
-   	scanf("%s", nome);
-    system("cls");
+    if escolha == '1':
+        while True:
+            print("\n------------------------- LOJA -------------------------")
+            print("[1] Espada Grande (10 de Ataque) $400")
+            print("[2] Espada Pequena (5 de Ataque) $300")
+            print("[3] Arco (5 de Ataque à Distância) $100")
+            print("[4] Escudo Grande (10 de Defesa) $200")
+            print("[5] Escudo Pequeno (5 de Defesa) $100")
+            print(f"\nMoedas: ${moedas}")
+            compra = input("Escolha um item ou [6] Sair: ")
+            
+            if compra == '1' and moedas >= 400:
+                moedas -= 400
+                ataque += 10
+            elif compra == '2' and moedas >= 300:
+                moedas -= 300
+                ataque += 5
+            elif compra == '3' and moedas >= 100:
+                moedas -= 100
+                ataque_distancia += 5
+            elif compra == '4' and moedas >= 200:
+                moedas -= 200
+                ataque_do_boss -= 10
+            elif compra == '5' and moedas >= 100:
+                moedas -= 100
+                ataque_do_boss -= 5
+            elif compra == '6':
+                break
+            else:
+                print("Opção inválida ou moedas insuficientes!")
+            
 
-    printf("O aventureiro %s comecou sua aventura e se deparou com uma bifurcacao.\n", nome);
-    printf("O caminho da esquerda leva para um castelo assombrado.\n");
-    printf("O caminho da direita leva para um pantano sombrio.\n");
+    else:
+        print("O velho te expulsa do castelo!")
+        input("Pressione Enter para continuar...")
 
-    int escolha;
-    printf("\nPor qual caminho %s ira seguir: \n[1] Esquerda\n[2] Direita\nResposta: ", nome);
-    scanf("%d", &escolha);
-    system("cls");
+else:
+    print("No pântano, você encontra um baú misterioso!")
+    escolha = input("[1] Abrir\n[2] Ignorar\nResposta: ")
+    if escolha == '1':
+        sorte = random.randint(1,4)
+        if sorte == 1:
+            print("O baú estava vazio!")
+        else:
+            print("Você encontrou equipamentos!")
+            ataque += 5 * (sorte//2)
+            ataque_do_boss -= 5 * (sorte//3)
+    input("Pressione Enter para continuar...")
+    os.system("cls")
+os.system("cls")
 
-    if(escolha == 1) {
-        printf("Adentrando o Castelo, voce encontra um velho afiando uma espada.\n");
-        printf("-- O que voce faz neste castelo?\n");
-        printf("[1] Estou em busca do meu caminho\n[2] Nao e da sua conta\nResposta: ");
-        scanf("%d", &escolha);
-        system("cls");
+print("O Heroi continua sua jornada, quando derrepente ouve um barulho, parece uma mistura de um trovao com rugido")
+input("Pressione Enter para continuar...")
+os.system("cls")
 
-        if(escolha == 1) {
-            while(1) {
-                printf("\n------------------------- LOJA -------------------------\n");
-                printf("[1] Espada Grande (10 de Ataque) $400\n");
-                printf("[2] Espada Pequena (5 de Ataque) $300\n");
-                printf("[3] Arco (5 de Ataque a Distancia) $100\n");
-                printf("[4] Escudo Grande (10 de Defesa) $200\n");
-                printf("[5] Escudo Pequeno (5 de Defesa) $100\n");
-                printf("\nMoedas: $%.2f\n", moedas);
-                printf("Escolha um item ou [6] Sair: ");
+# Combate contra o Boss
+print("Um monstro gigante aparece!")
+print("                         ^                       ^   ") 
+print("                         |\   \        /        /|   ")
+print("                        /  \  |\__  __/|       /  \  ")
+print("                       / /\ \ \ _ \/ _ /      /    \ ")
+print("                      / / /\ \ {*}\/{*}      /  / \ \    ")
+print("                      | | | \ \( (00) )     /  // |\ \   ")
+print("                      | | | |\ \(V""V)\    /  / | || \|  ")
+print("                      | | | | \ |^--^| \  /  / || || ||  ")
+print("                     / / /  | |( WWWW__ \/  /| || || ||  ")
+print("                    | | | | | |  \______\  / / || || || ")
+print("                    | | | / | | )|______\ ) | / | || ||  ")
+print("                    / / /  / /  /______/   /| \ \ || ||  ")
+print("                   / / /  / /  /\_____/  |/ /__\ \ \ \ \ ")
+print("                   | | | / /  /\______/    \   \__| \ \ \ ")
+print("                   | | | | | |\______ __    \_    \__|_| \ ")
+print("                   | | ,___ /\______ _  _     \_       \  |  ")
+print("                   | |/    /\_____  /    \      \__     \ |    /\ ")
+print("                   |/ |   |\______ |      |        \___  \ |__/  \ ")
+print("                   v  |   |\______ |      |            \___/     | ")
+print("                      |   |\______ |      |                    __/ ")
+print("                       \   \________\_    _\               ____/  ")
+print("                     __/   /\_____ __/   /   )\_,      _____/    ")
+print("                    /  ___/  \ uuuu /  ___/___)    \______/    ")
+print("                    VVV  V        VVV  V     ")
+input("Pressione Enter para continuar...")
+os.system("cls")    
 
-                int compra;
-                scanf("%d", &compra);
-
-                if(compra == 1 && moedas >= 400) {
-                    moedas -= 400;
-                    ataque += 10;
-                    printf("Voce comprou a Espada Grande!\n");
-                }
-                else if(compra == 2 && moedas >= 300) {
-                    moedas -= 300;
-                    ataque += 5;
-                    printf("Voce comprou a Espada Pequena!\n");
-                }
-                else if(compra == 3 && moedas >= 100) {
-                    moedas -= 100;
-                    ataque_distancia += 5;
-                    printf("Voce comprou o Arco!\n");
-                }
-                else if(compra == 4 && moedas >= 200) {
-                    moedas -= 200;
-                    defesa += 10;
-                    printf("Voce comprou o Escudo Grande!\n");
-                }
-                else if(compra == 5 && moedas >= 100) {
-                    moedas -= 100;
-                    defesa += 5;
-                    printf("Voce comprou o Escudo Pequeno!\n");
-                }
-                else if(compra == 6) {
-                    break;
-                }
-                else {
-                    printf("Opcao invalida ou moedas insuficientes!\n");
-                }
-                getchar();
-            }
-        }
-        else {
-            printf("O velho te expulsa do castelo!\n");
-            getchar();
-        }
-    }
-    else {
-        printf("No pantano, voce encontra um bau misterioso!\n");
-        printf("[1] Abrir\n[2] Ignorar\nResposta: ");
-        scanf("%d", &escolha);
-        
-        if(escolha == 1) {
-            printf("Voce encontrou equipamentos!\n");
-            ataque += 5;
-            defesa += 5;
-        }
-        getchar();
-        system("cls");
-    }
+while vida_boss > 0 and vida_guerreiro > 0:
+    # Turno do jogador
+    os.system("cls")
+    print(f"Vida do Boss: {vida_boss}")
+    print(f"Sua Vida: {vida_guerreiro}")
+    print("\nOpções:")
+    print("[1] Atacar")
+    if usos_cura > 0: print("[2] Curar")
+    if usos_magia > 0: print("[3] Magia")
     
-	getchar();
-	system("cls");
-		
-	printf("Voce caminha por um caminho escuro e ouve um barulho estrondeante, parece uma mistura de trovao com rugido!\n");
+    acao = input("Escolha: ")
     
-    printf("\nUm monstro gigante aparece!\n");
+    # Ação do jogador
+    if acao == '1':
+        ataque = 3 + ataque
+        vida_boss -= ataque
+        print(f"Você causou {ataque} de dano!")
+    elif acao == '2' and usos_cura > 0:
+        vida_guerreiro +=  40
+        usos_cura -= 1
+        print("Você se curou!")
+    elif acao == '3' and usos_magia > 0:
+        vida_boss -= 30
+        usos_magia -= 1
+        print("Magia poderosa!")
+    else:
+        print("Ação inválida!")
     
-    printf("                         ^                       ^  			 	  \n");
-    printf("                         |\\   \\        /        /|   			      \n");
-    printf("                        /  \\  |\\__  __/|       /  \\  		      \n");
-    printf("                       / /\\ \\ \\ _ \\/ _ /      /    \\ 		  	  \n");
-    printf("                      /  / \\ \\ {*}\\/{*}      /  / \\ \\  		  \n");
-    printf("                      | | | \\ \\( (00) )     /  // |\\ \\   		  \n");
-    printf("                      | | | |\\ \\(V\"\"V)\\    /  / | || \\|         \n");
-    printf("                      | | | | \\ |^--^| \\  /  / || || ||  			  \n");
-    printf("                     / / /  | |( WWWW__ \\/  /| || || ||  			  \n");
-    printf("                    | | | | | |  \\______\\  / / || || || 			  \n");
-    printf("                    | | | / | | )|______\\ ) | / | || ||  		      \n");
-    printf("                    / / /  / /  /______/   /| \\ \\ || ||             \n");
-    printf("                   / / /  / /  /\\_____/  |/ /__\\ \\ \\ \\ \\        \n");
-    printf("                   | | | / /  /\\______/    \\   \\__| \\ \\ \\       \n");
-    printf("                   | | | | | |\\______ __    \\_    \\__|_| \\        \n");
-    printf("                   | | ,___ /\\______ _  _     \\_       \\  |        \n");
-    printf("                   | |/    /\\_____  /    \\      \\__     \\ |    /\\\n");
-    printf("                   |/ |   |\\______ |      |        \\___  \\ |__/  \\\n");
-    printf("                   v  |   |\\______ |      |            \\___/     |  \n");
-    printf("                      |   |\\______ |      |                    __/   \n");
-    printf("                       \\   \\________\\_    _\\               ____/  \n");
-    printf("                     __/   /\\_____ __/   /   )\\_,      _____/       \n");
-    printf("                    /  ___/  \\ uuuu /  ___/___)    \\______/         \n");
-    printf("                    VVV  V        VVV  V    						  \n");
+    input("Pressione Enter...")
     
-    printf("\nVoce esta pronto para enfrentar o Boss! %s esta com %d de vida e %d adicional de ataque.\n", nome, vida_guerreiro, ataque);
-    
-    getchar();
-    system("cls");
+    # Turno do Boss
+    if vida_boss > 0:
+        dano_boss = ataque_do_boss
+        vida_guerreiro -= dano_boss
+        print(f"O Boss te atacou causando {dano_boss} de dano!")
+        input("Pressione Enter...")
 
-    while(vida_boss > 0 && vida_guerreiro > 0) {
-        printf("Vida do Boss: %d\n", vida_boss);
-        printf("Sua Vida: %d\n", vida_guerreiro);
-        printf("\nOpcoes:\n");
-        printf("[1] Atacar\n");
-        if(usos_cura > 0) printf("[2] Curar\n");
-        if(usos_magia > 0) printf("[3] Magia\n");
+# Resultado final
+os.system("cls")
+if vida_guerreiro <= 0:
+    print("""
+  ____    _    __  __ _____    _____     _______ ____   
+ / ___|  / \  |  \/  | ____|  / _ \ \   / / ____|  _ \  
+| |  _  / _ \ | |\/| |  _|   | | | \ \ V /|  _| | |_) | 
+| |_| |/ ___ \| |  | | |___  | |_| | | | | |___|  _ <  
+ \____/_/   \_\_|  |_|_____|  \___/  |_| |_____|_| \_\  
+""")
+else:
+    print("""
+    ___________   
+   '._==_==_=_.'   
+   .-\\:      /-.   
+  | (|:.     |) |  
+   '-|:.     |-'    
+     \\::.    /     
+      '::. .'       
+        ) (        
+      _.' '._      
+     `\"\"\"\"\"\"\"`     
+VOCÊ DERROTOU O MONSTRO!""")
 
-        int acao;
-        printf("Escolha: ");
-        scanf("%d", &acao);
-
-        // Ação do jogador
-        if(acao == 1) {
-            int dano = 15 + ataque;
-            vida_boss -= dano;
-            printf("Voce causou %d de dano!\n", dano);
-        }
-        else if(acao == 2 && usos_cura > 0) {
-            vida_guerreiro = (vida_guerreiro + 30 > 100) ? 100 : vida_guerreiro + 30;
-            usos_cura--;
-            printf("Voce se curou!\n");
-        }
-        else if(acao == 3 && usos_magia > 0) {
-            int dano_magia = 30;
-            vida_boss -= dano_magia;
-            usos_magia--;
-            printf("Magia poderosa! Causou %d de dano!\n", dano_magia);
-        }
-        else {
-            printf("Acao invalida!\n");
-        }
-
-        getchar();
-        getchar();
-      	system("cls");
-
-        // Turno do Boss
-        if(vida_boss > 0) {
-            int dano_boss = 23 - defesa;
-            vida_guerreiro -= dano_boss;
-            printf("O Boss te atacou causando %d de dano!\n", dano_boss);
-            getchar();
-            system("cls");
-        }
-    }
-
-    system("cls");
-    if(vida_guerreiro <= 0) {
-        printf("  ____    _    __  __ _____    _____     _______ ____        \n");
-        printf(" / ___|  / \\  |  \\/  | ____|  / _ \\ \\   / / ____|  _ \\  \n");
-        printf("| |  _  / _ \\ | |\\/| |  _|   | | | \\ \\ V /|  _| | |_) |  \n");
-        printf("| |_| |/ ___ \\| |  | | |___  | |_| | | | | |___|  _ <       \n");
-        printf(" \\____/_/   \\_\\_|  |_|_____|  \\___/  |_| |_____|_| \\_\\ \n");
-    }
-    else {
-        printf("    ___________   		 \n");
-        printf("   '._==_==_=_.'   		 \n");
-        printf("   .-\\\\:      /-.   	 \n");
-        printf("  | (|:.     |) |  		 \n");
-        printf("   '-|:.     |-'   		 \n");
-        printf("     \\\\::.    /    	 \n");
-        printf("      '::. .'      		 \n");
-        printf("        ) (       		 \n");
-        printf("      _.' '._     		 \n");
-        printf("     `\"\"\"\"\"\"\"`    \n");
-        printf("VOCE DERROTOU O MONSTRO! \n");
-    }
-
-    printf("Obrigado por jogar!\n");
-    return 0;
-}
+print("Obrigado por jogar!")
