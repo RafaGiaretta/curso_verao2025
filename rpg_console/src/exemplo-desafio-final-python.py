@@ -2,14 +2,14 @@ import random
 import os
 
 # Variáveis globais
-vida_boss = 100
+vida_boss = 130
 vida_guerreiro = 100
 usos_magia = 3
 usos_cura = 3
 moedas = 500.0
 ataque = 0.0
 ataque_distancia = 0.0
-defesa = 0.0
+ataque_do_boss = 23.0
 nome = ""
 
 os.system("cls")
@@ -51,16 +51,16 @@ if escolha == '1':
                 ataque_distancia += 5
             elif compra == '4' and moedas >= 200:
                 moedas -= 200
-                defesa += 10
+                ataque_do_boss -= 10
             elif compra == '5' and moedas >= 100:
                 moedas -= 100
-                defesa += 5
+                ataque_do_boss -= 5
             elif compra == '6':
                 break
             else:
                 print("Opção inválida ou moedas insuficientes!")
             
-            os.system("cls")
+
     else:
         print("O velho te expulsa do castelo!")
         input("Pressione Enter para continuar...")
@@ -75,9 +75,14 @@ else:
         else:
             print("Você encontrou equipamentos!")
             ataque += 5 * (sorte//2)
-            defesa += 5 * (sorte//3)
+            ataque_do_boss -= 5 * (sorte//3)
     input("Pressione Enter para continuar...")
     os.system("cls")
+os.system("cls")
+
+print("O Heroi continua sua jornada, quando derrepente ouve um barulho, parece uma mistura de um trovao com rugido")
+input("Pressione Enter para continuar...")
+os.system("cls")
 
 # Combate contra o Boss
 print("Um monstro gigante aparece!")
@@ -122,15 +127,15 @@ while vida_boss > 0 and vida_guerreiro > 0:
     
     # Ação do jogador
     if acao == '1':
-        dano = random.randint(10 + int(ataque), 20 + int(ataque))
-        vida_boss -= dano
-        print(f"Você causou {dano} de dano!")
+        ataque = 3 + ataque
+        vida_boss -= ataque
+        print(f"Você causou {ataque} de dano!")
     elif acao == '2' and usos_cura > 0:
-        vida_guerreiro = min(100, vida_guerreiro + 30)
+        vida_guerreiro +=  40
         usos_cura -= 1
         print("Você se curou!")
     elif acao == '3' and usos_magia > 0:
-        vida_boss -= random.randint(20, 40)
+        vida_boss -= 30
         usos_magia -= 1
         print("Magia poderosa!")
     else:
@@ -140,7 +145,7 @@ while vida_boss > 0 and vida_guerreiro > 0:
     
     # Turno do Boss
     if vida_boss > 0:
-        dano_boss = random.randint(15, 25)
+        dano_boss = ataque_do_boss
         vida_guerreiro -= dano_boss
         print(f"O Boss te atacou causando {dano_boss} de dano!")
         input("Pressione Enter...")
