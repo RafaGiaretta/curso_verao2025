@@ -3,8 +3,8 @@
 #include <string.h>
 
 
-// Variáveis globais
-int vida_boss = 100;
+// VariÃ¡veis globais
+int vida_boss = 130;
 int vida_guerreiro = 100;
 int usos_magia = 3;
 int usos_cura = 3;
@@ -14,16 +14,12 @@ int ataque_distancia = 0;
 int defesa = 0;
 char nome[50];
 
-void limparTela() {
-    system("cls");
-}
 
 int main() {
-    limparTela();
+
     
     printf("Insira o nome do aventureiro: ");
-    fgets(nome, 50, stdin);
-    nome[strcspn(nome, "\n")] = 0;
+   	scanf("%s", nome);
     system("cls");
 
     printf("O aventureiro %s comecou sua aventura e se deparou com uma bifurcacao.\n", nome);
@@ -110,7 +106,7 @@ int main() {
     }
     
 	getchar();
-	limparTela();
+	system("cls");
 		
 	printf("Voce caminha por um caminho escuro e ouve um barulho estrondeante, parece uma mistura de trovao com rugido!\n");
     
@@ -158,7 +154,7 @@ int main() {
         printf("Escolha: ");
         scanf("%d", &acao);
 
-        // Ação do jogador
+        // AÃ§Ã£o do jogador
         if(acao == 1) {
             int dano = 15 + ataque;
             vida_boss -= dano;
@@ -185,7 +181,7 @@ int main() {
 
         // Turno do Boss
         if(vida_boss > 0) {
-            int dano_boss = 23;
+            int dano_boss = 23 - defesa;
             vida_guerreiro -= dano_boss;
             printf("O Boss te atacou causando %d de dano!\n", dano_boss);
             getchar();
@@ -193,7 +189,7 @@ int main() {
         }
     }
 
-    limparTela();
+    system("cls");
     if(vida_guerreiro <= 0) {
         printf("  ____    _    __  __ _____    _____     _______ ____        \n");
         printf(" / ___|  / \\  |  \\/  | ____|  / _ \\ \\   / / ____|  _ \\  \n");
