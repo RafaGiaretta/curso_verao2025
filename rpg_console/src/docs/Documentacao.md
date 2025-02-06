@@ -79,7 +79,6 @@ O jogo é dividido em algumas seções principais:
 
 ### Linguagem: C ou Python\*
 
-- Utilização de funções para modularizar o código.
 - Uso de variáveis globais para monitorar o estado do jogo (vida, moedas, itens).
 
 ### Estrutura de Dados
