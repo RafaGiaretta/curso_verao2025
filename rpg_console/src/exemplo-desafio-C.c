@@ -3,7 +3,6 @@
 #include <string.h>
 
 
-// Variáveis globais
 int vida_boss = 130;
 int vida_guerreiro = 100;
 int usos_magia = 3;
@@ -154,7 +153,7 @@ int main() {
         printf("Escolha: ");
         scanf("%d", &acao);
 
-        // Ação do jogador
+        // AÃ§Ã£o do jogador
         if(acao == 1) {
             int dano = 15 + ataque;
             vida_boss -= dano;
