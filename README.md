@@ -3,7 +3,7 @@
 ## 🎯 Descrição do Projeto
 Este projeto tem como objetivo desafiar os alunos a desenvolverem um jogo de RPG baseado em texto, utilizando **Python** ou **C**, aplicando conceitos fundamentais da programação e lógica.
 
-Os alunos formarão **grupos de 4 pessoas** e deverão primeiro criar um **fluxograma** representando a lógica do jogo antes de iniciar a implementação.
+Os alunos formarão **grupos de 4 pessoas** e deverão primeiro criar um **fluxograma** representando a lógica do jogo e uma breve documentacao, antes de iniciar a implementação.
 
 ---
 
@@ -60,18 +60,19 @@ O projeto deve seguir a seguinte estrutura básica:
 
 ## 🚀 Como Começar
 1. Forme seu grupo e crie o **fluxograma do jogo** antes de começar a programar.
-2. Escolha a linguagem: **Python ou C**.
-3. Crie o arquivo principal (`rpg.py` ou `rpg.c`).
-4. Desenvolva o jogo seguindo as **regras de negócio**.
-5. Teste e ajuste o código conforme necessário.
-6. Envie o código para o repositório do grupo.
+2. Crie sua documentacao.
+3. Escolha a linguagem: **Python ou C**.
+4. Crie o arquivo principal (`rpg.py` ou `rpg.c`).
+5. Desenvolva o jogo seguindo as **regras de negócio**.
+6. Teste e ajuste o código conforme necessário.
+7. Salve os arquivos como descrito na Estrutura do Projeto.
 
 💡 **Dica:** Divida as tarefas entre os membros do grupo para facilitar o desenvolvimento!
 
 ---
 
 ## 📢 Entrega
-- O grupo deve **adicionar o fluxograma** ao repositorio.
+- O grupo deve **adicionar o fluxograma e a documentacao** ao repositorio.
 - O jogo deve rodar corretamente no console.
 - O código deve estar organizado e comentado.
 
