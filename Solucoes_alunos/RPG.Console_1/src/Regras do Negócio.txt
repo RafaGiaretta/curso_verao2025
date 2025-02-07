@@ -1,0 +1,9 @@
+1. 	O jogo tem um Héroi com atributos: 
+   -Vida (100)
+   -Moedas (350)
+	Você deve escolher um nome para seu Herói
+2. Durante o jogo, o herói poderá encontrar
+	Um baú contendo algum item
+	Ou uma sala vazia que vai direto pro mercador
+3. O jogador com seu héroi poderá comprar equipamentos para combater o boss final
+4. A batalha se encerra quando um dos personagens o herói ou boss chegarem a 0 de vida.

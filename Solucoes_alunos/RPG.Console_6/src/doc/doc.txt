@@ -1,0 +1,25 @@
+jogador inicia com 100 de hp 450 de dinheiro, ele seguira um caminho havera tomadas de decisao
+onde se for para esquerda ele encontrara o mercador onde os itens vendidos serao (Armas, pocoes de cura), se for para direita acha a floresta encantada dos elfos maliginos 
+e encontrara um slime se o jogador derrotar aparece um bau com alguma recompensa recompensa sera () e,
+seguindo em frente, encontrará o Castelo Assombrado, onde poderá encontrar o Boss Final, derrotando-o, o jogador receberá um grande recompensa pela vitória,
+se ele morrer, o jogo encerrará.
+
+Estrutura do jogo 
+
+
+
+requisitos funcionais 
+
+
+
+requisitos nao funcionais
+
+
+
+Fluxograma
+
+
+
+desenvolvimento
+
+Linguagem desenvolvida em Python 
