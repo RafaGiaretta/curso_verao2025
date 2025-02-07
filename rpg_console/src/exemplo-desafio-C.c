@@ -3,7 +3,6 @@
 #include <string.h>
 
 
-// Variáveis globais
 int vida_boss = 130;
 int vida_guerreiro = 100;
 int usos_magia = 3;
